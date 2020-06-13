@@ -1,0 +1,42 @@
+<templates>
+  <div t-name="Navbar" class="navbar">Navbar</div>
+
+  <div t-name="ControlPanel" class="controlpanel">
+    <h2>Control Panel</h2>
+    <MobileSearchView t-if="env.isMobile" />
+  </div>
+
+  <div t-name="FormView" class="formview">
+    <h2>Form View</h2>
+    <AdvancedComponent t-if="!env.isMobile" />
+  </div>
+
+  <div t-name="Chatter" class="chatter">
+    <h2>Chatter</h2>
+    <t t-foreach="messages" t-as="item"><div>Message <t t-esc="item"/></div></t>
+  </div>
+
+  <div t-name="MobileSearchView">Mobile searchview</div>
+
+  <div t-name="AdvancedComponent">
+    This component is only created in desktop mode.
+    <button>Button!</button>
+  </div>
+
+  <t t-name="maincontent">
+    <FormView />
+    <Chatter />
+  </t>
+  <div t-name="App" class="app" t-att-class="{mobile: env.isMobile, desktop: !env.isMobile}">
+    <Navbar/>
+    <ControlPanel/>
+    <div class="content-wrapper" t-if="!env.isMobile">
+      <div class="content">
+        <t t-call="maincontent"/>
+      </div>
+    </div>
+    <t t-else="">
+      <t t-call="maincontent"/>
+    </t>
+  </div>
+</templates>

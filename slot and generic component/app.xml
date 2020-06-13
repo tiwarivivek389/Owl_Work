@@ -1,0 +1,33 @@
+<templates>
+  <div t-name="Card" class="card" t-att-class="state.showContent ? 'full' : 'small'">
+    <div class="card-title">
+      <t t-esc="props.title"/><button t-on-click="toggleDisplay">Toggle</button>
+    </div>
+    <t t-if="state.showContent">
+      <div class="card-content" >
+        <t t-slot="content"/>
+      </div>
+      <div class="card-footer">
+        <t t-slot="footer"/>
+      </div>
+    </t>
+  </div>
+
+  <div t-name="Counter">
+    <t t-esc="state.val"/><button t-on-click="inc">Inc</button>
+  </div>
+
+  <div t-name="App" class="main">
+    <Card title="'Title card A'">
+      <t t-set="content">Content of card 1...  [<t t-esc="state.a"/>]</t>
+      <t t-set="footer"><button t-on-click="inc('a', 1)">Increment A</button></t>
+    </Card>
+    <Card title="'Title card B'">
+      <t t-set="content">
+        <div>Card 2... [<t t-esc="state.b"/>]</div>
+        <Counter />
+      </t>
+      <t t-set="footer"><button t-on-click="inc('b', -1)">Decrement B</button></t>
+    </Card>
+  </div>
+</templates>
