@@ -1,0 +1,28 @@
+.app {
+    width: 70%;
+}
+
+button {
+    color: darkred;
+    font-size: 30px;
+    width: 220px;
+}
+
+.value {
+    font-size: 26px;
+    padding: 20px;
+}
+
+.notification-list {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.notification {
+    width: 150px;
+    margin: 4px 8px;
+    padding: 16px;
+    border: 1px solid: black;
+    background-color: lightgray;
+}

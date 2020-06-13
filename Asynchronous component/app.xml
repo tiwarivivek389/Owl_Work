@@ -1,0 +1,18 @@
+<templates>
+  <div t-name="App" class="app">
+    <button t-on-click="increment">Increment</button>
+    <SlowComponent value="state.value"/>
+    <AsyncRoot>
+      <NotificationList notifications="state.notifs"/>
+    </AsyncRoot>
+  </div>
+  <div t-name="SlowComponent" class="value" >
+    Current value: <t t-esc="props.value"/>
+  </div>
+
+  <div t-name="NotificationList" class="notification-list">
+    <t t-foreach="props.notifications" t-as="notif">
+      <div class="notification"><t t-esc="notif"/></div>
+    </t>
+  </div>
+</templates>

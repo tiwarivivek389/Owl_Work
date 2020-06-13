@@ -1,0 +1,35 @@
+<templates>
+  <div t-name="Window" class="window" t-att-style="style" t-on-click="updateZIndex">
+    <div class="header">
+      <span t-on-mousedown="startDragAndDrop"><t t-esc="props.info.title"/></span>
+      <span class="close" t-on-click.stop="close">×</span>
+    </div>
+    <t t-slot="default"/>
+  </div>
+
+  <div t-name="WindowManager" class="window-manager"
+       t-on-close-window="closeWindow"
+       t-on-update-z-index="updateZIndex"
+       t-on-set-window-position="setWindowPosition">
+    <Window t-foreach="windows" t-as="w" t-key="w.id" info="w">
+      <t t-component="w.component"/>
+    </Window>
+  </div>
+
+  <div t-name="App" class="app">
+    <WindowManager t-ref="wm"/>
+    <div class="menubar">
+      <button t-on-click="addWindow('Hello')">Say Hello</button>
+      <button t-on-click="addWindow('Counter')">Counter</button>
+    </div>
+  </div>
+
+  <div t-name="HelloWorld">
+    World
+  </div>
+
+  <div t-name="Counter" class="counter">
+    <button t-on-click="inc">Inc</button>
+    <span><t t-esc="state.value"/></span>
+  </div>
+</templates>
