@@ -1,0 +1,41 @@
+<templates>
+   <button t-name="Counter" t-on-click="increment" class="clickcounter">
+      Click Me! [<t t-esc="state.value"/>]
+    </button>
+
+    <div t-name="App">
+      <h2>Transition on DOM element</h2>
+
+      <div class="demo">
+        <button t-on-click="toggle('flag')">Toggle square</button>
+        <div>
+          <div t-if="state.flag" class="square" t-transition="fade">Hello</div>
+        </div>
+      </div>
+
+      <h2>Transition on sub components</h2>
+
+      <div class="demo">
+        <button t-on-click="toggle('componentFlag')">Toggle component</button>
+        <div>
+          <Counter t-if="state.componentFlag" t-transition="fade"/>
+        </div>
+      </div>
+
+      <h2>Transition on lists</h2>
+      <p>Transitions can also be applied on lists</p>
+      <div class="demo">
+        <button t-on-click="addNumber">Add a number</button>
+        <div>
+          <t t-foreach="state.numbers" t-as="n">
+            <span t-transition="fade" class="numberspan" t-key="n"><t t-esc="n"/></span>
+          </t>
+        </div>
+      </div>
+
+      <h2>Simple CSS animation</h2>
+      <p>Remember, normal CSS still apply: for example, a simple flash animation with pure css </p>
+      <div><a class="btn flash">Click</a>
+    </div>
+  </div>
+</templates>

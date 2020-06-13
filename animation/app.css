@@ -1,0 +1,58 @@
+button {
+    font-size: 18px;
+    height: 35px;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 5px;
+    margin: 5px;
+    background-color: #dddddd;
+}
+
+.flash {
+    background-position: center;
+    transition: background .6s;
+}
+
+.flash:active {
+  background-color: gray;
+  transition: background 0s;
+}
+
+.square {
+    background-color: red;
+    width: 100px;
+    height: 70px;
+    color: white;
+    margin: 0 20px;
+    font-size: 24px;
+    line-height: 70px;
+    text-align: center;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .6s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+.demo {
+    display: flex;
+    height: 80px;
+}
+
+.clickcounter {
+    margin-left: 20px;
+    height: 50px;
+    background-color: blue;
+    color: white;
+}
+
+.numberspan {
+    border: 1px solid green;
+    margin: 5px;
+    padding: 5px;
+}
